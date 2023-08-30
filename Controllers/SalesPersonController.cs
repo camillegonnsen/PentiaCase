@@ -15,7 +15,7 @@ public class SalesPersonController : Controller
         _httpClient = new HttpClient();
     }
     
-    public async Task<List<SalesPerson>> GetSalesPerson(){
+    public async Task<List<SalesPerson>> GetSalesPeople(){
         string baseUrl = "https://azurecandidatetestapi.azurewebsites.net/api/v1";
         string endpointPath = "/SalesPersons"; 
         string apiUrl = $"{baseUrl}{endpointPath}";
@@ -25,8 +25,7 @@ public class SalesPersonController : Controller
 
         HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
-         if (response.IsSuccessStatusCode)
-        {
+        if (response.IsSuccessStatusCode){
             string responseContent = await response.Content.ReadAsStringAsync();
             // Process the response content and pass data to the view
             salesPeople =  JsonConvert.DeserializeObject<List<SalesPerson>>(responseContent);
@@ -34,6 +33,7 @@ public class SalesPersonController : Controller
             OrdersController ordersController = new();
             var orders = await ordersController.GetOrders();
 
+            //Adding orders to each salesperson
             foreach (var salesPerson in salesPeople){
                 salesPerson.Orders = orders.Where( x => x.SalesPersonId == salesPerson.Id).ToList();
             }
@@ -44,16 +44,15 @@ public class SalesPersonController : Controller
         }
     }
 
-    public async Task<ActionResult> SalesPeople()
-    {
-        var lst = await GetSalesPerson();
-        return View("SalesPersonView",lst);
+    public async Task<ActionResult> SalesPeople(){
+        var salesPeople = await GetSalesPeople();
+        return View("SalesPersonView",salesPeople);
     } 
 
     public async Task<ActionResult> GetDetails(int salespersonid){
-            IEnumerable<SalesPerson> salesPeople = await GetSalesPerson();
+            IEnumerable<SalesPerson> salesPeople = await GetSalesPeople();
+            //Get the salesperson with the same id
             var person = salesPeople.FirstOrDefault(x => x.Id == salespersonid);
             return View("SalesPersonDetailView", person);
     }
-
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jGbtGBh6hrM5dudbEwNla1hY60Yiojkap1sbA/kp0FQSGHC3Re4UHoZB8IUjWTVu0e2PJKTWvOou/ejlQWzbAA==",
+  "dgSpecHash": "tIgJaxNA4qlitlhG8E4pvoxfV4guFtsRBpJBLvQK2rd28T1Qu/721Saax8S+EcQuZnEBOQ6A+UMWV/reY6B37g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mille\\OneDrive\\Skrivebord\\Wingineers\\Wingineers\\Wingineers.csproj",
+  "projectFilePath": "C:\\Users\\mille\\OneDrive\\Skrivebord\\PentiaCase\\Wingineers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mille\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\mille\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

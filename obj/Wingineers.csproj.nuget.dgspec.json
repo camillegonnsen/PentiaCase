@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mille\\OneDrive\\Skrivebord\\Wingineers\\Wingineers\\Wingineers.csproj": {}
+    "C:\\Users\\mille\\OneDrive\\Skrivebord\\PentiaCase\\Wingineers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mille\\OneDrive\\Skrivebord\\Wingineers\\Wingineers\\Wingineers.csproj": {
+    "C:\\Users\\mille\\OneDrive\\Skrivebord\\PentiaCase\\Wingineers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mille\\OneDrive\\Skrivebord\\Wingineers\\Wingineers\\Wingineers.csproj",
+        "projectUniqueName": "C:\\Users\\mille\\OneDrive\\Skrivebord\\PentiaCase\\Wingineers.csproj",
         "projectName": "Wingineers",
-        "projectPath": "C:\\Users\\mille\\OneDrive\\Skrivebord\\Wingineers\\Wingineers\\Wingineers.csproj",
+        "projectPath": "C:\\Users\\mille\\OneDrive\\Skrivebord\\PentiaCase\\Wingineers.csproj",
         "packagesPath": "C:\\Users\\mille\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mille\\OneDrive\\Skrivebord\\Wingineers\\Wingineers\\obj\\",
+        "outputPath": "C:\\Users\\mille\\OneDrive\\Skrivebord\\PentiaCase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mille\\AppData\\Roaming\\NuGet\\NuGet.Config"

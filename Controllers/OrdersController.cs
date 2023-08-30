@@ -21,47 +21,50 @@ public class OrdersController : Controller
         string apiKey = "test1234";
         _httpClient.DefaultRequestHeaders.Add("ApiKey", apiKey);
 
+    
         HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
-
-         if (response.IsSuccessStatusCode)
-        {
+        if (response.IsSuccessStatusCode){
+            //HttpResponseMessage -> string
             string responseContent = await response.Content.ReadAsStringAsync();
+            
             // Process the response content and pass data to a list
-            IEnumerable<Order> lst = new List<Order>();
-            lst =  JsonConvert.DeserializeObject<IEnumerable<Order>>(responseContent);
-            return lst;
-        }
-        else
-        {
-            // Handle error cases
+            IEnumerable<Order> orders = new List<Order>();
+            orders =  JsonConvert.DeserializeObject<IEnumerable<Order>>(responseContent);
+            return orders;
+        }else{
+            Console.WriteLine("No successful status code when retrieving API");
             return null;
         }
     }
 
-    public async Task<ActionResult> Orders()
-    {
-        var lst = await GetOrders();
+    public async Task<ActionResult> Orders(){
+        //All orders
+        var orders = await GetOrders();
 
+        //The different formats a date can be represented in
         string[] formats = { "dd-MM-yyyy HH:mm", "yyyy-MM-dd HH:mm" };
 
-        IDictionary<string, int> orders = new Dictionary<string, int>();
+        //Dictionary for storing months and amount of orders to use in graph
+        IDictionary<string, int> dictOrders = new Dictionary<string, int>();
 
-        for (int i = 43; i >= 0; i--) 
-        {
+        //Predefine the dictionary with every month 
+        for (int i = 43; i >= 0; i--) {
             DateTime dateTime = DateTime.Now.AddMonths(-i);
             string shortDate = dateTime.Month.ToString("d2") + "/" + dateTime.Year.ToString();
-            orders.Add(shortDate,0);
+            dictOrders.Add(shortDate,0);
         }
 
-        foreach (Order order in lst){
+        //Adding the amount of orders on each month
+        foreach (Order order in orders){
             DateTime dateTime;
             if (DateTime.TryParseExact(order.OrderDate, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime)){
                 string shortDate = dateTime.Month.ToString("d2") + "/" + dateTime.Year.ToString();
-                    orders[shortDate] = orders[shortDate] + 1;
+                dictOrders[shortDate] = dictOrders[shortDate] + 1;
             }else{
                 Console.WriteLine("Unable to parse DateTime");
             }
         }
-        return View("OrdersView",orders);
+        //Returning the dictionary to ordersView så the graph can be shown
+        return View("OrdersView",dictOrders);
     }  
 }
