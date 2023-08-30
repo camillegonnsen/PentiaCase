@@ -1,0 +1,32 @@
+@model List<SalesPerson>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales People Table</title>
+</head>
+<body>
+    <h2>Sales people</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Orders</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var salesPerson in Model)
+        {
+            <tr>
+                <td>@salesPerson.Id</td>
+                <td>@salesPerson.Name</td>
+                <td>@salesPerson.Orders.Count()</td>
+                <td><a asp-area="" asp-controller="SalesPerson" asp-action="GetDetails" asp-route-salespersonid=@salesPerson.Id><button>Details</button></a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</body>
+</html>
