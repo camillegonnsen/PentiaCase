@@ -44,7 +44,7 @@ public class OrdersController : Controller
         //The different formats a date can be represented in
         string[] formats = { "dd-MM-yyyy HH:mm", "yyyy-MM-dd HH:mm" };
 
-        //Dictionary for storing months and amount of orders to use in graph
+        //Dictionary for storing months and amount of orders to use for graph
         IDictionary<string, int> dictOrders = new Dictionary<string, int>();
 
         //Predefine the dictionary with every month 
